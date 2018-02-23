@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Olive 10</title>
+	<link rel="stylesheet" href="">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<style>
+		body{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;/*
+			overflow: hidden;*/
+		}
+		#productList,#orderList{
+		    position: relative;
+		    width: 250px;
+		    border: 10px solid;
+		    padding: 10px;
+		    margin-left: 10px;
+		}
+		#icon img{
+		    width: 35px;
+		    height: 35px;
+		}
+		#content {
+		    background: #ccc;
+		    position: absolute;
+		    width: 100vw;
+		    height: 100vh;
+		}
+		ul.firsMenu{
+			margin: 0;
+			padding: 0;
+		}
+		.firsMenu li{
+			list-style-type: none;
+			line-height: 50px;
+			border-bottom: 1px solid;
+			text-align: center;
+		}
+		a{
+			text-decoration: none;
+			color: black;
+			font-family: sans-serif;
+		}
+		#menu{
+			background:#efeeef;
+			width: 200px;
+			height: 100%;
+			position: absolute;
+		}
+		
+		.nav-wrap { 
+			margin: 50px auto; 
+			background-color: rgba(0,0,0,0.6); 
+			border-top:    2px solid white; 
+			border-bottom: 2px solid white; 
+		}
+
+/* Example One */
+#example-one { 
+	margin: 0 auto; 
+	list-style: none; 
+	position: relative; 
+	width: 960px; 
+}
+#example-one li { 
+	display: inline-block;	
+}
+#example-one a { 
+	color: #bbb; 
+	font-size: 14px; 
+	float: left;
+	padding: 6px 10px 4px 10px;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+#example-one a:hover { 
+	color: white; 
+}
+#magic-line { 
+	position: absolute;
+	bottom: -2px; 
+	left: 0; 
+	width: 100px; 
+	height: 2px; 
+	background: #fe4902;
+}
+.current_page_item a { 
+	color: white !important; 
+}
+.ie6 #example-one li, .ie7 #example-one li { 
+	display: inline; 
+}
+.ie6 #magic-line {
+	bottom: -3px;
+}
+
+	</style>
+</head>
+<body>
+	<div class="nav-wrap">
+ <ul class="group" id="example-one">
+    <li class="current_page_item"><a href="#">Home</a></li>
+    <li><a href="#">Buy Tickets</a></li>
+    <li><a href="#">Group Sales</a></li>
+    <li><a href="#">Reviews</a></li>
+    <li><a href="#">The Show</a></li>
+    <li><a href="#">Videos</a></li>
+    <li><a href="#">Photos</a></li>
+    <li><a href="#">Magic Shop</a></li>
+ </ul>
+</div>
+	<div id="menu">
+		<ul class="firsMenu">
+			<li><a href="#">Item 1</a></li>
+			<li><a href="#">Item 2</a></li>
+			<li><a href="#">Item 3</a></li>
+			<li><a href="#">Item 4</a></li>
+			<li><a href="#">Item 5</a></li>
+		</ul>
+	</div>	
+	<div id="content">
+		<div id="icon">
+			<a href="#"><img src="https://cdn4.iconfinder.com/data/icons/wirecons-free-vector-icons/32/menu-alt-512.png" alt=""></a>
+		</div>
+
+		<h3>Choose an order</h3>
+		<div id="productList">
+			<form action="" id="items">
+				<input type="checkbox" name="order" value="Shoes">Shoes Tk 1200<br>	
+				<input type="checkbox" name="order" value="Slippers">Slippers Tk 800<br>
+				<input type="checkbox" name="order" value="Ring">Ring Tk 1500<br>
+				<input type="checkbox" name="order" value="Watch">Watch Tk 2500<br>
+				<input type="checkbox" name="order" value="Bracelet">Bracelet Tk 2100<br>
+			</form>
+			<br><br>
+			<button id="more">Show More</button>
+		</div>
+		<br>
+		<div id="orderList">
+			<label for="" id="labelList">No order yet!</label><br>
+			<label for="" id="lists"></label>
+			<label for="" id="">Total amount is:Tk</label>
+			<label for="" id="amount">0</label>
+		</div>
+	</div>	
+	<script>
+		jQuery(document).ready(function() {
+			calculate();
+			function calculate(){
+				$("input").click(function(){
+					var order=document.forms[0],
+						orderProduct="",
+						price=0;
+						for(var i=0;i<order.length;i++){
+							if(order[i].checked){
+								var item=order[i].value;
+								if(item=="Shoes"){
+								 price+=1200;
+								 
+								}
+							else if(item=="Slippers"){
+								 price+=800;
+								 
+								}
+							else if(item=="Ring"){
+								 price+=1500;
+								 
+								}
+								else if(item=="Watch"){
+								 price+=2500;
+								 
+								}
+							else if(item=="Bracelet"){
+								 price+=2100;
+								 
+								}
+								else if(item=="Camera"){
+								 price+=4000;
+								 
+								}
+								else if(item=="Book"){
+								 price+=700;
+								 
+								}
+								else if(item=="Pencil"){
+								 price+=100;
+								 
+								}
+								else if(item=="Lamp"){
+								 price+=2500;
+								 
+								}
+								else if(item=="Bag"){
+								 price+=500;
+								 
+								}
+								else if(item=="Book"){
+								 price+=700;
+								 
+								}
+								else if(item=="Pen"){
+								 price+=200;
+								 
+								}
+								else if(item=="Glass"){
+								 price+=240;
+								 
+								}
+								orderProduct=orderProduct+"<ul><li>"+order[i].value+"</ul></li>";
+								
+							}
+							
+						}
+						$("#amount").html(price);
+						$("#lists").html(orderProduct);
+						$("#labelList").html("Your orders are : ");
+					});
+			}
+			var start=0,
+				stop=3;
+				$("#more").click(function(){
+					$.ajax({
+						type:"GET",
+						url:"10more.html",
+						success:function(html){
+							var a=$(html),
+								b=a.filter("#moreItem"),
+								c=b.slice(start, stop);
+							$("#items").append(c);
+							start+=3;
+							stop+=3;
+							calculate();	
+						}
+					});
+				});
+
+				$("#icon").on('click',  function(event) {
+				var x=$("#content").css("left");
+				if(x=="200px")
+					$("#content").animate({"left":"0px"});
+				else
+					$("#content").animate({"left":"200px"});
+			});
+				var $el, leftPos, newWidth,
+			        $mainNav = $("#example-one");
+			    
+			    $mainNav.append("<li id='magic-line'></li>");
+			    var $magicLine = $("#magic-line");
+			    
+			    $magicLine
+			        .width($(".current_page_item").width())
+			        .css("left", $(".current_page_item a").position().left)
+			        .data("origLeft", $magicLine.position().left)
+			        .data("origWidth", $magicLine.width());
+			        
+			    $("#example-one li a").hover(function() {
+			        $el = $(this);
+			        leftPos = $el.position().left;
+			        newWidth = $el.parent().width();
+			        $magicLine.stop().animate({
+			            left: leftPos,
+			            width: newWidth
+			        });
+			    }, function() {
+			        $magicLine.stop().animate({
+			            left: $magicLine.data("origLeft"),
+			            width: $magicLine.data("origWidth")
+			        });    
+			    });
+		});
+	</script>	
+	
+</body>
+</html>
